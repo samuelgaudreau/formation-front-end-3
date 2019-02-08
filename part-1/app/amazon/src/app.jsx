@@ -44,7 +44,7 @@ function AvailableItem(props) {
   }
 
   return (
-    <li key={props.id}>{props.name} - {props.price}$ <button onClick={handleClick}>Add one item to cart</button></li>
+    <li>{props.name} - {props.price}$ <button onClick={handleClick}>Add one item to cart</button></li>
   );
 }
 
@@ -55,7 +55,7 @@ function AvailableItems(props) {
       <ul>
         {
           props.availableItems.map(item => {
-            return <AvailableItem { ...item } dispatch={props.dispatch} />
+            return <AvailableItem key={item.id} { ...item } dispatch={props.dispatch} />
           })
         }
       </ul>
