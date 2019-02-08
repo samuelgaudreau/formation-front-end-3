@@ -1,10 +1,12 @@
-export const ADD_ITEM = "DoSomething";
+export const ADD_ITEM = "ADD_ITEM";
 
-export const addItemToCart = () => {
+export const addItemToCart = (id, name, price) => {
     return {
         type: ADD_ITEM,
         payload: {
-            amount: 1
+            id,
+            name,
+            price
         }
     }
 } 

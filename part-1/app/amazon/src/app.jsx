@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { addItemToCart } from './actions';
+import uuid from "uuid/v4";
 
 // CART 
 
 function Cart(props) {
   return (
-    <p>Cart (<span>{props.amount} $</span>)</p>
+    <>
+      <p>Cart (<span>{props.amount} $</span>)</p>
+      <ul>
+        {
+          props.items.map(item => {
+            return <li key={item.id}>{item.name} - {item.price}$</li>
+          })
+        }
+      </ul>
+    </>
   );
 }
 
 export const ConnectedCart = connect(
   (state) => ({
-    amount: state.amount
+    amount: state.amount,
+    items: state.items
   }),
   null
 )(Cart);
@@ -20,8 +31,10 @@ export const ConnectedCart = connect(
 // ITEM
 
 function Item (props) {
-  function handleClick(evt) {
-    props.dispatch(addItemToCart());
+  function handleClick(event) {
+    event.stopPropagation();
+
+    props.dispatch(addItemToCart(uuid(), "Dan Abramov - Autobiography", 1));
   }
   
   return (
