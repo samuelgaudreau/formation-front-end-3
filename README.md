@@ -5,10 +5,10 @@
 * Understand update & render
 * Understand reconciliation
 * Rendering de list
-* Redux, Render and ReSelect
 
 # Part 2: Redux 101
 
 * Redux basics
 * Redux + React
+* Render and ReSelect
 * Messaging patterns applied to Redux
