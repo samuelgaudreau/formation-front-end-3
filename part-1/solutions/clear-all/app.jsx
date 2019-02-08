@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-import { addItemToCart } from './actions';
+import { addItemToCart, clearAllItems } from './actions';
 import uuid from "uuid/v4";
 
 
@@ -49,13 +49,20 @@ function AvailableItem(props) {
 }
 
 function AvailableItems(props) {
+  function clearAll(event) {
+    event.stopPropagation();
+
+    props.dispatch(clearAllItems());
+  }
+
   return (
     <>
       <p>Available Items ({props.availableItems.length})</p>
+      <button onClick={clearAll}>Clear All</button>
       <ul>
         {
           props.availableItems.map(item => {
-            return <AvailableItem { ...item } dispatch={props.dispatch} />
+            return <AvailableItem key={item.id} { ...item } dispatch={props.dispatch} />
           })
         }
       </ul>
