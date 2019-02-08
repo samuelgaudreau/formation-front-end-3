@@ -1,4 +1,4 @@
-import { ADD_ITEM } from "./actions";
+import { ADD_ITEM, CLEAR_ALL, REMOVE_CART_ITEM } from "./actions";
 
 const initialState = {
     cartAmount: 0,
@@ -18,6 +18,22 @@ export function rootReducers(state = initialState, { type, payload }) {
                 cartAmount: state.cartAmount + payload.price,
                 cartItems: [...state.cartItems, { id: payload.id, name: payload.name, price: payload.price }]
             };
+        case CLEAR_ALL:
+            return {
+                ...state,
+                cartAmount: 0,
+                cartItems : []
+            }
+        case REMOVE_CART_ITEM:
+            const index = state.cartItems.findIndex(x => x.id === payload.id);
+            return {
+                ...state,
+                cartAmount: state.cartAmount - payload.price,
+                cartItems: [
+                    ...state.cartItems.slice(0, index),
+                    ...state.cartItems.slice(index + 1)
+                ]
+            }
         default:
             return state;
     }

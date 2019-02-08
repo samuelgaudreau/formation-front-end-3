@@ -1,4 +1,4 @@
-import { ADD_ITEM } from "./actions";
+import { ADD_ITEM, CLEAR_ALL } from "./actions";
 
 const initialState = {
     cartAmount: 0,
@@ -18,6 +18,12 @@ export function rootReducers(state = initialState, { type, payload }) {
                 cartAmount: state.cartAmount + payload.price,
                 cartItems: [...state.cartItems, { id: payload.id, name: payload.name, price: payload.price }]
             };
+        case CLEAR_ALL:
+            return {
+                ...state,
+                cartAmount: 0,
+                cartItems : []
+            }
         default:
             return state;
     }

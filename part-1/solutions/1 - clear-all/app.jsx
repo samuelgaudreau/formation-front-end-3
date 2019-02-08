@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-import { addItemToCart } from './actions';
+import { addItemToCart, clearAllItems } from './actions';
 import uuid from "uuid/v4";
 
 
 // ********************************************** //
 // ******************* CART ********************* //
 // ********************************************** //
+
+function CartItem(props) {
+  const { item } = props;
+  return (
+    <li key={item.id}>{item.name} - {item.price}$ <button onClick={removeItem}>Remove</button></li>
+  );
+}
 
 function Cart(props) {
   return (
@@ -15,7 +22,7 @@ function Cart(props) {
       <ul>
         {
           props.cartItems.map(item => {
-            return <li key={item.id}>{item.name} - {item.price}$</li>
+            return <CartItem key={item.id} item={item} dispatch={props.dispatch} />
           })
         }
       </ul>
@@ -37,21 +44,28 @@ export const ConnectedCart = connect(
 // ********************************************** //
 
 function AvailableItem(props) {
-  function handleClick(event) {
+  function addItem(event) {
     event.stopPropagation();
 
     props.dispatch(addItemToCart(uuid(), props.name, parseInt(props.price)));
   }
 
   return (
-    <li>{props.name} - {props.price}$ <button onClick={handleClick}>Add one item to cart</button></li>
+    <li key={props.id}>{props.name} - {props.price}$ <button onClick={addItem}>Add one item to cart</button></li>
   );
 }
 
 function AvailableItems(props) {
+  function clearAll(event) {
+    event.stopPropagation();
+
+    props.dispatch(clearAllItems());
+  }
+
   return (
     <>
       <p>Available Items ({props.availableItems.length})</p>
+      <button onClick={clearAll}>Clear All</button>
       <ul>
         {
           props.availableItems.map(item => {
