@@ -8,10 +8,10 @@ import uuid from "uuid/v4";
 function Cart(props) {
   return (
     <>
-      <p>Cart (<span>{props.amount} $</span>)</p>
+      <p>Your Cart (<span>{props.cartAmount}$</span>)</p>
       <ul>
         {
-          props.items.map(item => {
+          props.cartItems.map(item => {
             return <li key={item.id}>{item.name} - {item.price}$</li>
           })
         }
@@ -22,31 +22,47 @@ function Cart(props) {
 
 export const ConnectedCart = connect(
   (state) => ({
-    amount: state.amount,
-    items: state.items
+    cartAmount: state.cartAmount,
+    cartItems: state.cartItems
   }),
   null
 )(Cart);
 
-// ITEM
+// ITEMS
 
-function Item (props) {
+function AvailableItem(props) {
   function handleClick(event) {
     event.stopPropagation();
 
-    props.dispatch(addItemToCart(uuid(), "Dan Abramov - Autobiography", 1));
+    props.dispatch(addItemToCart(uuid(), props.name, parseInt(props.price)));
   }
-  
+
   return (
-    <span>Dan Abramov - Autobiography <button onClick={handleClick}>Add one item to cart</button></span>
+    <li key={props.id}>{props.name} - {props.price}$ <button onClick={handleClick}>Add one item to cart</button></li>
   );
 }
 
-export const ConnectedItem = connect(
-  null,
-  null
-)(Item);
+function AvailableItems(props) {
+  return (
+    <>
+      <p>Available Items ({props.availableItems.length})</p>
+      <ul>
+        {
+          props.availableItems.map(item => {
+            return <AvailableItem { ...item } dispatch={props.dispatch} />
+          })
+        }
+      </ul>
+    </>
+  );
+}
 
+export const ConnectedAvailableItems = connect(
+  (state) => ({
+    availableItems: state.availableItems,
+  }),
+  null
+)(AvailableItems);
 
 // ********************************************* //
 // ******************* APP ********************* //
@@ -59,8 +75,13 @@ export class App extends Component {
         <p>Welcome to Amazon!</p>
         <img alt="amazon" src="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2016/02/AMAZON-1200x537.png" />
         <br />
-        <ConnectedItem />
         <ConnectedCart />
+        <ConnectedAvailableItems />
+        {/* <ul>
+          <li><ConnectedItem name="Dan Abramov - Autobiography" price="10" /></li>
+          <li><ConnectedItem name="Redux in Action" price="5" /></li>
+          <li><ConnectedItem name="Shin Megami Tensei: Strange Journey Redux" price="1" /></li>
+        </ul> */}
       </div>
     );
   }
