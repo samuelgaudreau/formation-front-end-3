@@ -1,8 +1,3 @@
-// import { createStore } from "redux";
-// import { rootReducers } from './reducers';
-
-// export const store = createStore(rootReducers);
-
 import { createStore, applyMiddleware } from "redux";
 import { rootReducers } from './reducers';
 import { API_REQUEST, API_REQUEST_SUCCEEDED, API_REQUEST_FAILED, API_REQUEST_SHOW_LOADING, API_REQUEST_HIDE_LOADING } from "./actions";
