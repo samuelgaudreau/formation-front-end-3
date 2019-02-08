@@ -31,11 +31,3 @@ const requestMiddleware = store => next => async action => {
 };
 
 export const store = createStore(rootReducers, applyMiddleware(consoleLoggerMiddleware, requestMiddleware));
-
-
-
-
-// import { createStore } from "redux";
-// import { rootReducers } from './reducers';
-
-// export const store = createStore(rootReducers);

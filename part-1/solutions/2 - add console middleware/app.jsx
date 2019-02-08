@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
+import { addItemToCart, clearAllItems } from './actions';
 import uuid from "uuid/v4";
-
-import { addItemToCart, clearAllItems, removeCartItem, getItems } from './actions';
 
 
 // ********************************************** //
@@ -11,11 +10,6 @@ import { addItemToCart, clearAllItems, removeCartItem, getItems } from './action
 
 function CartItem(props) {
   const { item } = props;
-
-  function removeItem(event) {
-    props.dispatch(removeCartItem(item.id, item.price));
-  }
-
   return (
     <li key={item.id}>{item.name} - {item.price}$ <button onClick={removeItem}>Remove</button></li>
   );
@@ -57,15 +51,11 @@ function AvailableItem(props) {
   }
 
   return (
-    <li>{props.name} - {props.price}$ <button onClick={addItem}>Add item to cart</button></li>
+    <li key={props.id}>{props.name} - {props.price}$ <button onClick={addItem}>Add one item to cart</button></li>
   );
 }
 
 function AvailableItems(props) {
-  if (props.availableItems.length === 0) {
-    props.dispatch(getItems());
-  }
-
   function clearAll(event) {
     event.stopPropagation();
 
