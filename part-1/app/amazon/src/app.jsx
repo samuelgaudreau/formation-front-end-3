@@ -3,7 +3,10 @@ import { connect } from "react-redux"
 import { addItemToCart } from './actions';
 import uuid from "uuid/v4";
 
-// CART 
+
+// ********************************************** //
+// ******************* CART ********************* //
+// ********************************************** //
 
 function Cart(props) {
   return (
@@ -28,7 +31,10 @@ export const ConnectedCart = connect(
   null
 )(Cart);
 
-// ITEMS
+
+// ********************************************** //
+// ******************* ITEM ********************* //
+// ********************************************** //
 
 function AvailableItem(props) {
   function handleClick(event) {
