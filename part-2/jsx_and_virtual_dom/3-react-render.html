@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Discover React Render</title>
+        <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+    </head>
+    <body>
+        <!-- We will put our React component inside this div. -->
+        <div id="function_container"></div>
+        <div id="class_container"></div>
+
+        <!-- Load React. -->
+        <script
+            src="https://unpkg.com/react@16/umd/react.development.js"
+            crossorigin
+        ></script>
+        <script
+            src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+            crossorigin
+        ></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <!-- Load our React component. -->
+        <script type="text/babel">
+
+            // 
+            const FunctionJSXElement = ({name}) => (
+                <div className="flex justify-center">
+                    <h1>Hello {name}</h1>
+                </div>
+            );
+            const functionElement = <FunctionJSXElement name={"John"} />;
+            console.log({functionElement});
+            const functionInstance = ReactDOM.render(functionElement, document.querySelector("#function_container"));
+            console.log({functionInstance});
+
+
+            // 
+            class MyComponent extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = { isMorning: true };
+
+                    this.toggleMoment = this.toggleMoment.bind(this);
+                }
+
+                toggleMoment () {
+                    this.setState(x => ({ isMorning: !x.isMorning }));
+                }
+
+                render() {
+                    const {name} = this.props;
+                    const {isMorning} = this.state;
+
+                    return (
+                        <div className="flex justify-center" onClick={this.toggleMoment}>
+                            <Title isMorning={isMorning} name={name}></Title>
+                        </div>);
+                }
+            }
+            const Title = ({isMorning, name}) => (
+                <h1>{isMorning ? "Good Morning" : "Good Night"} {name}</h1>
+            );
+            const componentElement = <MyComponent name={"John"} />
+            console.log({componentElement});
+            const componentInstance = ReactDOM.render(componentElement, document.querySelector("#class_container"), );
+            // Look how the instance contains the state and method on the class (try call componentInstance.toggleMoment() in the console)
+            // If you navigate under componentInstance._reactInternalFiber.child and look for the property type, memoizedProps and again child you can find the resolve DOM element div>h1>[text]
+            console.log({componentInstance});
+
+            // You now find back the classic DOM 
+            const componentDOMNode = ReactDOM.findDOMNode(componentInstance);
+            console.log({componentDOMNode});
+        </script>
+    </body>
+</html>

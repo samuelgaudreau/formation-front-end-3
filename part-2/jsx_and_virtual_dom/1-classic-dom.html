@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Introduction to DOM</title>
+        <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+    </head>
+    <body>
+        <!-- We will insert something here -->
+        <div id="app_container"></div>
+        <div class="flex justify-center">
+            <h1>Hello World</h1>
+        </div>
+
+        <script>
+            const containerNode = document.querySelector("#app_container");
+
+            const divNode = document.createElement("div");
+            divNode.setAttribute("class", "flex justify-center")
+            containerNode.appendChild(divNode);
+
+            const h1Node = document.createElement("h1");
+            divNode.appendChild(h1Node);
+
+            const textNode = document.createTextNode("Hello World");
+            h1Node.appendChild(textNode);
+        </script>
+    </body>
+</html>
