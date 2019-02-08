@@ -44,7 +44,7 @@ export class App extends Component {
     return (
       <div>
         <p>Welcome to Amazon!</p>
-        <img width="128" height="256" alt="amazon is the best" src="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2016/02/AMAZON-1200x537.png" />
+        <img alt="amazon" src="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2016/02/AMAZON-1200x537.png" />
         <br />
         <ConnectedItem />
         <ConnectedCart />
