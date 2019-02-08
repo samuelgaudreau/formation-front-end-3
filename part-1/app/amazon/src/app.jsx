@@ -77,11 +77,6 @@ export class App extends Component {
         <br />
         <ConnectedCart />
         <ConnectedAvailableItems />
-        {/* <ul>
-          <li><ConnectedItem name="Dan Abramov - Autobiography" price="10" /></li>
-          <li><ConnectedItem name="Redux in Action" price="5" /></li>
-          <li><ConnectedItem name="Shin Megami Tensei: Strange Journey Redux" price="1" /></li>
-        </ul> */}
       </div>
     );
   }
