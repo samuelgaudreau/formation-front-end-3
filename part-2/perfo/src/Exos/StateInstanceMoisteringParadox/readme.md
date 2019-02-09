@@ -1,1 +1,0 @@
-Comprendre comment un ReactElement se comporte

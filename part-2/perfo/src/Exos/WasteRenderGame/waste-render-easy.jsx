@@ -1,8 +1,5 @@
 import React, { Component, PureComponent } from "react";
 
-// const { whyDidYouUpdate } = require("why-did-you-update");
-// whyDidYouUpdate(React);
-
 // TODO: S'assurer que StaticImage et StaticText ne se rerender pas lorsqu'on update le compteur
 // TODO: S'assurer que le Counter ne s'update pas lorsque je click le random button
 export class WasteRenderEasy extends Component {

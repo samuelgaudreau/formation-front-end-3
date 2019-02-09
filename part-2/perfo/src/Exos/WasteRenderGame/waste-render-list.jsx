@@ -1,8 +1,5 @@
 import React, { Component, PureComponent } from "react";
 
-// const { whyDidYouUpdate } = require("why-did-you-update");
-// whyDidYouUpdate(React);
-
 // TODO: If I add an item it doesn't render everything + the note stay with the appropriate cow
 // TODO: Understand why it react like this (hint: reactElement)
 export class WasteRenderList extends Component {
