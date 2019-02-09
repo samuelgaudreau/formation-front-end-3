@@ -36,7 +36,7 @@ const mapToApiRequestMiddleware = store => next => action => {
     return next(action);
 };
 
-const addCorrelationId = store => next => action => {
+const addCorrelationIdMiddleware = store => next => action => {
     return next({
         ...action,
         correlationId: uuid()
@@ -77,4 +77,4 @@ const requestMiddleware = store => next => async action => {
     return next(action);
 };
 
-export const store = createStore(rootReducers, applyMiddleware(addCorrelationId, consoleLoggerMiddleware, mapToApiRequestMiddleware, requestMiddleware));
+export const store = createStore(rootReducers, applyMiddleware(addCorrelationIdMiddleware, consoleLoggerMiddleware, mapToApiRequestMiddleware, requestMiddleware));
