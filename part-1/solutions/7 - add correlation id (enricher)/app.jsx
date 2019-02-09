@@ -101,44 +101,6 @@ class AvailableItems extends Component {
   }
 }
 
-// function AvailableItems(props) {
-//   if (props.availableItems.length === 0) {
-//     props.dispatch(getItems());
-//   }
-
-//   function clearAll(event) {
-//     event.stopPropagation();
-
-//     props.dispatch(clearAllItems());
-//   }
-
-//   function showLoading() {
-//     return (
-//       <div>Loading....</div>
-//     )
-//   }
-
-//   function renderList() {
-//     return (
-//       <ul>
-//         {
-//           props.availableItems.map(item => {
-//             return <AvailableItem key={item.id} { ...item } dispatch={props.dispatch} />
-//           })
-//         }
-//       </ul>
-//     );
-//   }
-
-//   return (
-//     <>
-//       <p>Available Items ({props.availableItems.length})</p>
-//       <button onClick={clearAll}>Clear All</button>
-//       {props.isLoading ? showLoading() : renderList()}
-//     </>
-//   );
-// }
-
 export const ConnectedAvailableItems = connect(
   (state) => ({
     availableItems: state.availableItems,
