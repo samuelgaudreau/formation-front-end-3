@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { StateInstanceMoisteringParadox } from "./Exos/StateInstanceMoisteringParadox/stateInstanceMoisteringParadox-page";
 import UpdateAndReconciliationPage from "./Exos/UpdateAndReconciliation/update-and-reconciliation-page";
 import { WasteRenderPage } from "./Exos/WasteRenderGame/waste-render-page";
+import { ProfilingToolsPage } from "./Exos/ProfilingTools/profiling-tools-page";
+import { StateInstanceReconciliationParadox } from "./Exos/StateInstanceReconciliationParadox/stateInstanceReconciliationParadox-page";
 
 const Index = () => <h2>Formation Performance React</h2>;
 
@@ -16,23 +17,26 @@ class App extends Component {
                         <Link to="/" className="mh2">
                             Home
                         </Link>
+                        <Link to="/element-instance/" className="mh2">
+                            Element vs Instance
+                        </Link>
                         <Link to="/update-reconciliation/" className="mh2">
                             Reconciliation Game
                         </Link>
                         <Link to="/waste-render-game/" className="mh2">
                             Waste Render Game
                         </Link>
-                        <Link to="/exos2/" className="mh2">
-                            Exos #2
+                        <Link to="/profiling-tools/" className="mh2">
+                            Profiling tools
                         </Link>
                     </nav>
 
                     <div className="flex items-center justify-center">
                         <Route path="/" exact component={Index} />
                         <Route
-                            path="/exos2/"
+                            path="/element-instance/"
                             exact
-                            component={StateInstanceMoisteringParadox}
+                            component={StateInstanceReconciliationParadox}
                         />
                         <Route
                             path="/update-reconciliation/"
@@ -43,6 +47,11 @@ class App extends Component {
                             path="/waste-render-game/"
                             exact
                             component={WasteRenderPage}
+                        />
+                        <Route
+                            path="/profiling-tools/"
+                            exact
+                            component={ProfilingToolsPage}
                         />
                     </div>
                 </div>

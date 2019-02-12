@@ -10,3 +10,4 @@ export const addItemToCart = (id, name, price) => {
         }
     }
 } 
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Fun with comparaison</title>
+        <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+    </head>
+    <body>
+        <!-- We will insert something here -->
+        <div id="app_container"></div>
+        <div class="flex justify-center">
+            <h1>Hello World</h1>
+        </div>
+
+        <script>
+            // Important comparaison
+            const exos1 = "a" === "a";
+            const exos2 = "a" === "b";
+
+            const exos3 = 1 === 1;
+            const exos4 = 1 === 2;
+            
+            // Ok we are not in kindergarden maybe we can skip to less obvious...
+
+            const exos5_objA = { name: "John"};
+            const exos5_objB = { name: "John"};
+            const exos5 = exos5_objA === exos5_objB
+
+            const exos6_objA = { name: "John"};
+            const exos6_objB = exos6_objA
+            const exos6 = exos6_objA === exos6_objB
+
+            const exos7_objA = { name: "John"};
+            const exos7_objB = exos7_objA
+            exos7_objB.name = "Smith";
+            const exos7 = exos7_objA === exos7_objB
+
+            const exos8_objA = { name: "John"};
+            const exos8_objB = {...exos7_objA, name: "Smith"}
+            const exos8 = exos8_objA === exos8_objB
+
+            const exos9_arrA = [];
+            const exos9_arrB = [];
+            const exos9 = exos9_arrA === exos9_arrB
+
+            const exos10_arrA = [1];
+            const exos10_arrB = exos10_arrA;
+            exos10_arrB.push(2)
+            const exos10 = exos10_arrA === exos10_arrB
+
+            const exos11_obj = {name: "John"}
+            const exos11_arrA = [exos11_obj];
+            const exos11_arrB = [...exos11_arrA, {name: "Smith"}];
+            const exos11_A = exos11_arrA === exos11_arrB
+            const exos11_B = exos11_arrB[0] === exos11_obj
+
+            const exos12_objA = {name: "John"}
+            const exos12_objB = {name: "Smith"}
+            const exos12_arrA = [exos12_objA, exos12_objB];
+            const exos12_arrB = exos12_arrA.map(x => {
+                if(x.name === "John"){
+                    return {name: "John John"}
+                }
+                return x;
+            });
+            const exos12_A = exos12_arrA === exos12_arrB;
+            const exos12_B = exos12_arrB[0] === exos12_objA;
+            const exos12_C = exos12_arrB[1] === exos12_objB;
+
+            const exos13_objA_friend = {name: "John Friend"}
+            const exos13_objA = {name: "John", friend: exos13_objA_friend}
+            const exos13_objB_friend = {name: "Smith Friend"}
+            const exos13_objB = {name: "Smith", friend: exos13_objB_friend}
+            const exos13_arrA = [exos13_objA, exos13_objB];
+            const exos13_arrB = exos13_arrA.map(x => {
+                if(x.name === "John"){
+                    return {...x, name: "John John"}
+                }
+                return {...x};
+            });
+            const exos13_A = exos13_arrB[0] === exos13_objA;
+            const exos13_B = exos13_arrB[0].friend === exos13_objA_friend;
+            const exos13_C = exos13_arrB[1] === exos13_objB;
+            const exos13_D = exos13_arrB[1].friend === exos13_objB_friend;
+
+            // Having fun comparing! (base on https://charlieharvey.org.uk/page/javascript_the_weird_parts)
+            const fun1_arrA = [0];
+            const fun1_A = fun1_arrA == fun1_arrA
+            const fun1_B = fun1_arrA == !fun1_arrA
+
+            const fun2 = NaN == NaN
+
+            const fun3 = 0.1+0.2 == 0.3;
+
+            const fun4 = Math.max() > Math.min();
+
+            const fun5 = []+[] === "";
+
+            const fun6 = []+{} === "[object Object]";
+
+            const fun7 = true+true === 2;
+            const fun8 = true === 1;
+
+            const fun9 = (!+[]+[]+![]).length
+
+        </script>
+    </body>
+</html>

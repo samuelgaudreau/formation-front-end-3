@@ -1,8 +1,5 @@
 import React, { Component, PureComponent } from "react";
 
-// const { whyDidYouUpdate } = require("why-did-you-update");
-// whyDidYouUpdate(React);
-
 // TODO: Fixer l'app (quand je click sur les boutons j'ai de quoi qui change à l'écran)
 // TODO: Faire que le LifeManagementPanel ne s'update pas à chaque fois
 export class WasteRenderIntermediate extends Component {

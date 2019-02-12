@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import { addItemToCart } from './actions';
 import uuid from "uuid/v4";
 
-
 // ********************************************** //
 // ******************* CART ********************* //
 // ********************************************** //
