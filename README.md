@@ -11,10 +11,19 @@ Le CSS de la page a déjà été fait par un expert dans le domaine. Il ne faut 
 
 3- Delete a cart item
 
-4- Create request middleware
+Exercice 4: 
 
-5- Map to API Request (mapper)
+Ajouter un middleware pour récupérer les données doivent à partir du fake api fournie.
 
-6- Add Loadings (splitter)
+Exercice 5:
 
-7- Add Corelation ID (enricher)
+Ajouter un middleware pour mapper les actions corresponds à des requêtes HTTP en une action API_REQUEST.
+Modifier le middleware de l'exercice 4 pour handler uniquement l'action API_REQUEST.
+
+Exercice 6:
+
+Un component doit afficher un indicateur de loading quand une requête HTTP est en cours.
+
+Exercice 7:
+
+Ajouter un middleware qui enrichie d'un "correlationId" toutes les actions.
