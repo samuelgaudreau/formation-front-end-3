@@ -7,9 +7,15 @@ Le CSS de la page a déjà été fait par un expert dans le domaine. Il ne faut 
 
 1- Clear all cart items
 
+Ajouter un bouton qui permet de retirer tous les items du cart.
+
 2- Add a console middleware
 
+Ajouter un middleware qui log dans la console toute les actions qui passent dans Redux.
+
 3- Delete a cart item
+
+Ajouter un bouton à la fin de chaque item dans le Cart qui permet de retirer l'item du Cart.
 
 Exercice 4: 
 
