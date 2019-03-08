@@ -21,6 +21,10 @@ Exercice 4:
 
 Ajouter un middleware pour récupérer les données doivent à partir du fake api fournie.
 
+Pour faire une requête au fake-api :
+
+`const response = await fetch("http://localhost:5678/api/amazon/items", { method: "GET" });`
+
 Exercice 5:
 
 Ajouter un middleware pour mapper les actions corresponds à des requêtes HTTP en une action API_REQUEST.
