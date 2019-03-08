@@ -23,7 +23,14 @@ Ajouter un middleware pour récupérer les données doivent à partir du fake ap
 
 Pour faire une requête au fake-api :
 
-`const response = await fetch("http://localhost:5678/api/amazon/items", { method: "GET" });`
+```
+const response = await fetch("http://localhost:5678/api/amazon/items", { method: "GET" });
+
+if (response.ok) {
+    const content = await response.json();
+    ...
+}
+```
 
 Exercice 5:
 
