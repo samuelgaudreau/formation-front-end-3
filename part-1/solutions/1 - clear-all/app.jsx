@@ -11,7 +11,7 @@ import uuid from "uuid/v4";
 function CartItem(props) {
   const { item } = props;
   return (
-    <li key={item.id}>{item.name} - {item.price}$ <button onClick={removeItem}>Remove</button></li>
+    <li key={item.id}>{item.name} - {item.price}$</li>
   );
 }
 
