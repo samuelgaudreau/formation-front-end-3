@@ -61,7 +61,7 @@ class StaticImage extends Component {
     }
 }
 
-// Condition: Need to stay a function (hint: React.Memo)
+// Condition: Need to stay a function
 const StaticText = () => {
     return <div>Allo!</div>;
 };
